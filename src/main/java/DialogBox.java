@@ -1,11 +1,17 @@
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.Node;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 
 public class DialogBox extends HBox {
 
@@ -16,12 +22,23 @@ public class DialogBox extends HBox {
         text = new Label(s);
         displayPicture = new ImageView(i);
 
-        //Styling the dialog box
+        // Styling the dialog box
         text.setWrapText(true);
         displayPicture.setFitWidth(100.0);
         displayPicture.setFitHeight(100.0);
-        this.setAlignment(Pos.TOP_RIGHT);
 
+        // Add padding between ImageView and Label
+        // 10px padding to the right of the ImageView
+        HBox.setMargin(displayPicture, new Insets(0, 10, 0, 0));
+        // Set the background color of the dialog box
+        this.setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
+
+        // Clip the ImageView into a circle
+        Circle clip = new Circle(50, 50, 50); // Adjust the radius (last parameter) based on your ImageView size
+        displayPicture.setClip(clip);
+
+
+        this.setAlignment(Pos.TOP_RIGHT);
         this.getChildren().addAll(text, displayPicture);
     }
 

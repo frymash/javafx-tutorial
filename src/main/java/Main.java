@@ -32,6 +32,7 @@ public class Main extends Application {
 
         scrollPane = new ScrollPane();
         dialogContainer = new VBox();
+        dialogContainer.setSpacing(10); // Adds 10px of padding between each DialogBox
         scrollPane.setContent(dialogContainer);
 
         userInput = new TextField();
